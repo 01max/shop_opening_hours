@@ -1,0 +1,13 @@
+- start_with_day ||= Date.today.wday
+- readable_time_by_weekday = opening_slots.readable_time_by_weekday
+- weekdays_index = (0..6).to_a
+- shifted_days = weekdays_index.shift(start_with_day)
+
+.card
+  .card-body
+    %table
+      - (weekdays_index + shifted_days).each do |day_index|
+        - row_class = day_index == start_with_day ? 'font-weight-bold' : ''
+        %tr{ class: row_class }
+          %td= I18n.t('date.day_names')[day_index].humanize
+          %td.pl-3= readable_time_by_weekday[day_index]

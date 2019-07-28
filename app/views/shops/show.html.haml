@@ -12,6 +12,8 @@
               %h6= t("activerecord.attributes.shop.#{attribute}").humanize
               %span= @shop.send(attribute)
 
+      .col-12.col-sm-6
+        = render('shops/opening_slots/display', opening_slots: @opening_slots, start_with_day: Date.today.wday)
       .col-12
         %hr
 
