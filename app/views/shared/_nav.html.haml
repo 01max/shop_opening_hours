@@ -1,0 +1,7 @@
+- shops_class = %w(shops).include?(params['controller']) ? 'active' : ''
+
+%ul.nav.navbar-nav
+  %li.nav-item
+    = link_to shops_path, { class: "nav-link #{shops_class}" } do
+      %i.fas.fa-store
+      = Shop.model_name.human.pluralize.humanize

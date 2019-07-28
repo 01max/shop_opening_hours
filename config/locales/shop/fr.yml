@@ -1,0 +1,19 @@
+fr:
+  activerecord:
+    models:
+      shop:
+        zero: magasin
+        one: magasin
+        other: magasins
+
+    attributes:
+      shop:
+        id: id
+        name: nom
+
+        created_at: créé le
+        updated_at: modifié le
+
+    errors:
+      models:
+        shop:

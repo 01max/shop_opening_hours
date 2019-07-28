@@ -1,0 +1,13 @@
+.card
+  .card-header
+    %h2= @shop
+
+  .card-body
+
+    .row
+      .col-12.col-sm-6
+        %ul.list-group
+          - %w(id name created_at).each do |attribute|
+            %li.list-group-item
+              %h6= t("activerecord.attributes.shop.#{attribute}").humanize
+              %span= @shop.send(attribute)
