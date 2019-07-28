@@ -28,9 +28,9 @@
               - opening_slots.each do |opening_slot|
                 %tr
                   %th.text-center{ scope: 'row' }= opening_slot.id
-                  %td= opening_slot.days_of_week
-                  %td= opening_slot.opening_at
-                  %td= opening_slot.closing_at
+                  %td= opening_slot.readable_days_of_week
+                  %td= opening_slot.readable_opening_at
+                  %td= opening_slot.readable_closing_at
                   %td
                     - os_edit_path = edit_shop_opening_slot_path(shop_id: opening_slot.shop_id, id: opening_slot.id)
                     = link_to os_edit_path, class: 'btn btn-sm btn-warning', title: t('shared.action.update') do

@@ -10,7 +10,7 @@ RSpec.describe Shop, type: :model do
     expect(shop.to_s).not_to be_empty
   end
 
-  it 'responds to to_s with its fighters & if' do
+  it 'responds to to_s with its name' do
     expect(shop.to_s).to eq(shop.name)
   end
 end

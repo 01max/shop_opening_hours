@@ -12,8 +12,8 @@ fr:
         shop: magasin lié
 
         days_of_week: jours de la semaine concernés
-        opening_at: commence à partir de
-        closing_at: termine à
+        opening_at: ouvre à
+        closing_at: ferme à
 
         created_at: créé le
         updated_at: modifié le

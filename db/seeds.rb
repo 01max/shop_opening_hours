@@ -1,1 +1,1 @@
-FactoryBot.create_list(:shop, 10)
+FactoryBot.create_list(:shop_with_opening_slots, 10)
