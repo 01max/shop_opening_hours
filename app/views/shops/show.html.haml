@@ -11,3 +11,9 @@
             %li.list-group-item
               %h6= t("activerecord.attributes.shop.#{attribute}").humanize
               %span= @shop.send(attribute)
+
+      .col-12
+        %hr
+
+      .col-12
+        = render('shops/opening_slots/list', shop: @shop, opening_slots: @opening_slots, pagy: @pagy)

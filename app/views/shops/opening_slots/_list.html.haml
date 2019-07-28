@@ -1,0 +1,40 @@
+- title = local_assigns[:title] ? title : OpeningSlot.model_name.human(count: 2).humanize
+
+.card
+
+  .card-header
+    %h2= title
+
+  .card-body
+    .row
+
+      .col-12
+        .table-responsive-sm
+
+          %table.table.table-hover.table-sm.align-middle
+            %thead.thead-dark.text-center
+              %tr
+                %th{ scope: 'col' }= t('activerecord.attributes.opening_slot.id').humanize
+                %th{ scope: 'col' }= t('activerecord.attributes.opening_slot.days_of_week').humanize
+                %th{ scope: 'col' }= t('activerecord.attributes.opening_slot.opening_at').humanize
+                %th{ scope: 'col' }= t('activerecord.attributes.opening_slot.closing_at').humanize
+
+                %th.text-right
+                  - unless local_assigns[:hide_new]
+                    = link_to new_shop_opening_slot_path(shop_id: shop.id), class: 'btn btn-sm btn-success' do
+                      %i.fas.fa-fw.fa-plus
+
+            %tbody
+              - opening_slots.each do |opening_slot|
+                %tr
+                  %th.text-center{ scope: 'row' }= opening_slot.id
+                  %td= opening_slot.days_of_week
+                  %td= opening_slot.opening_at
+                  %td= opening_slot.closing_at
+                  %td
+                    - os_edit_path = edit_shop_opening_slot_path(shop_id: opening_slot.shop_id, id: opening_slot.id)
+                    = link_to os_edit_path, class: 'btn btn-sm btn-warning', title: t('shared.action.update') do
+                      %i.fas.fa-fw.fa-edit
+
+      - if local_assigns[:pagy]
+        .col-12.justify-content-center!= pagy_bootstrap_nav(pagy)

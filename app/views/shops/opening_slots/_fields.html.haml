@@ -1,0 +1,18 @@
+- weekday_names = t('date.day_names').each_with_index.map { |d,i| [d,i] }.to_h
+
+.row
+  .col-12.col-sm-6
+    .form-group
+      = form.association :shop, collection: Shop.all, include_blank: false
+
+  .col-12.col-sm-6
+    .form-group
+      = form.input :days_of_week, collection: weekday_names, input_html: { multiple: true }
+
+  .col-12.col-sm-6
+    .form-group
+      = form.input :opening_at
+
+  .col-12.col-sm-6
+    .form-group
+      = form.input :closing_at

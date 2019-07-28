@@ -1,0 +1,23 @@
+fr:
+  activerecord:
+    models:
+      opening_slot:
+        zero: "Créneau d'ouverture"
+        one: "Créneau d'ouverture"
+        other: "Créneaux d'ouverture"
+
+    attributes:
+      opening_slot:
+        id: id
+        shop: magasin lié
+
+        days_of_week: jours de la semaine concernés
+        opening_at: commence à partir de
+        closing_at: termine à
+
+        created_at: créé le
+        updated_at: modifié le
+
+    errors:
+      models:
+        opening_slot:

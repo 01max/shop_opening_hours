@@ -6,8 +6,9 @@ class ShopsController < ApplicationController
     @pagy, @shops = pagy(Shop.all)
   end
 
-  # GET /shops/1
+  # GET /shops/:id
   def show
+    @pagy, @opening_slots = pagy(@shop.opening_slots)
   end
 
   # GET /shops/new
@@ -15,7 +16,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new
   end
 
-  # GET /shops/1/edit
+  # GET /shops/:id/edit
   def edit
   end
 
