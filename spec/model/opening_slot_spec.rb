@@ -89,4 +89,17 @@ RSpec.describe OpeningSlot, type: :model do
     expect(opening_slot.readable_closing_at).to eq(expected_string)
   end
 
+  # readable_time
+
+  it 'reponds to readable_time' do
+    expect(opening_slot.readable_time).not_to be_empty
+  end
+
+  it 'reponds to readable_time with the correct string' do
+    expected_string = [opening_slot.readable_opening_at, opening_slot.readable_closing_at].join('—')
+
+    expect(opening_slot.readable_time).to eq(expected_string)
+  end
+
+
 end

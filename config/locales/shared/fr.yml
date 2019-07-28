@@ -29,3 +29,5 @@ fr:
       successful_destruction_f: La %{klass} "%{instance}" a été supprimée avec succès.
       successful_destruction_v: L'%{klass} "%{instance}" a été supprimé avec succès.
       successful_destruction_vf: L'%{klass} "%{instance}" a été supprimée avec succès.
+
+      closed: fermé

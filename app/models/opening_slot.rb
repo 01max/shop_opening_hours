@@ -68,6 +68,52 @@ class OpeningSlot < ApplicationRecord
     [closing_hours, closing_minutes].join(join_string)
   end
 
+  # Combine +readable_opening_at+ & +readable_closing_at+.
+  # @return [String]
+  # @see readable_opening_at
+  # @see readable_closing_at
+  #
+  def readable_time(join_string = '—')
+    [readable_opening_at, readable_closing_at].join(join_string)
+  end
+
+  class << self
+
+    # Class method grouping all instances by the +days_of_week+ they cover.
+    # @return [Hash]
+    # @see days_of_week
+    #
+    def by_weekday
+      concerned_opening_slots = all.order(:opening_at).to_a
+      output = {}
+
+      (0..6).each do |day|
+        output[day] = concerned_opening_slots.select do |instance|
+          instance.days_of_week.include?(day)
+        end
+      end
+      output
+    end
+
+    # Class method returning the +readable_time+ of each instance grouped by +by_weekday+.
+    # @return [Hash]
+    # @see by_weekday
+    #
+    def readable_time_by_weekday(join_string = ', ')
+      concerned_opening_slots = all.by_weekday
+      output = {}
+
+      (0..6).each do |day_index|
+        hours_of_the_day = concerned_opening_slots[day_index].map do |instance|
+          instance.readable_time
+        end.join(join_string)
+
+        output[day_index] = hours_of_the_day.empty? ? I18n.t('shared.notice.closed').humanize : hours_of_the_day
+      end
+      output
+    end
+  end
+
   protected
 
   # Check & set the values included in +days_of_week+
