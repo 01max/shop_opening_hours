@@ -74,8 +74,10 @@ class OpeningSlot < ApplicationRecord
   # @return [Enumerator<Integer>]
   #
   def clean_days_of_week!
-    self.days_of_week = days_of_week.map{ |d| d.to_i }
-                                    .select{ |d| (0..6).include?(d) }
-                                    .uniq
+    self.days_of_week = days_of_week.map do |d|
+      d.to_i unless d.empty?
+    end.select do |d|
+      (0..6).include?(d)
+    end.uniq
   end
 end
